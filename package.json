@@ -1,0 +1,47 @@
+{
+  "name": "taobao-insight-desktop",
+  "version": "1.0.0",
+  "description": "淘宝商品数据采集桌面工具",
+  "main": "main.js",
+  "author": "local",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "cli": "node cli.js",
+    "dist": "electron-builder --win portable",
+    "test": "node test/e2e-src.js",
+    "test:gui": "node test/e2e-gui.js",
+    "test:exe": "node test/smoke-exe.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "local.taobao.insight",
+    "productName": "TaobaoInsight",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "ui/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "TaobaoInsight.exe"
+    }
+  }
+}

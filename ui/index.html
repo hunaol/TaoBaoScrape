@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+<title>淘宝销量采集器</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">淘宝销量 / 评价采集器</div>
+  <div class="status">
+    <span class="dot" id="browserDot"></span><span id="browserText">浏览器未启动</span>
+    <span class="sep"></span>
+    <span class="dot" id="loginDot"></span><span id="loginText">未登录</span>
+  </div>
+  <div class="actions">
+    <button id="btnStart" class="ghost">启动浏览器</button>
+    <button id="btnLogin" class="ghost">打开登录页</button>
+    <button id="btnCheckLogin" class="ghost">检查登录</button>
+    <button id="btnOutput" class="ghost">打开数据目录</button>
+  </div>
+</header>
+
+<section class="panel">
+  <div class="row">
+    <label>关键词</label>
+    <input id="kw" type="text" placeholder="例如：羽绒服、保温杯、猫粮" autofocus />
+    <label class="inline"><input id="doSort" type="checkbox" checked /> 按销量排序</label>
+    <label class="inline">条数上限 <input id="maxItems" type="number" value="60" min="10" max="200" /></label>
+    <button id="btnSearch" class="primary">搜索并导出</button>
+  </div>
+  <div class="row">
+    <label class="inline">商品序号 <input id="idx" type="number" value="1" min="1" style="width:70px" /></label>
+    <button id="btnDetail" class="ghost">抓该商品详情</button>
+    <button id="btnProbe" class="ghost">检测评价区</button>
+    <button id="btnReviews" class="ghost">抓该商品评价</button>
+    <label class="inline">评估条数 <input id="rvCount" type="number" value="20" min="1" max="100" style="width:70px" /></label>
+    <span class="grow"></span>
+    <button id="btnBatch" class="warn">批量抓前 N 条详情</button>
+    <label class="inline">N <input id="batchN" type="number" value="3" min="1" max="20" style="width:60px" /></label>
+    <label class="inline"><input id="batchReviews" type="checkbox" /> 同时抓评价</label>
+  </div>
+</section>
+
+<main class="split">
+  <div class="left">
+    <div class="tablehead">
+      <span class="title">搜索结果</span>
+      <span id="tableMeta" class="meta">尚未搜索</span>
+    </div>
+    <div class="tablewrap">
+      <table id="grid">
+        <thead>
+          <tr><th>#</th><th>销量</th><th>价格</th><th>标题</th><th>店铺</th><th>发货地</th><th>操作</th></tr>
+        </thead>
+        <tbody id="gridBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="right">
+    <div class="tablehead"><span class="title">运行日志</span><button id="btnClear" class="ghost small">清空</button></div>
+    <pre id="log" class="log"></pre>
+  </div>
+</main>
+
+<footer class="footer">
+  <span id="foot">就绪</span>
+  <span class="grow"></span>
+  <span id="busy" class="busy hidden">任务执行中…</span>
+</footer>
+
+<script src="renderer.js"></script>
+</body>
+</html>
