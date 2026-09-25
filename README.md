@@ -27,7 +27,8 @@
 
 ## 快速开始（用打包好的 exe）
 
-1. 从 [Releases](https://github.com/hunaol/TaoBaoScrape/releases) 下载 `TaobaoInsight.exe`
+1. 下载 exe：**[点此下载 dist/TaobaoInsight.exe](https://github.com/hunaol/TaoBaoScrape/raw/main/dist/TaobaoInsight.exe)**
+   （仓库里直接带了打包好的产物，约 71 MB；也可以在文件页面点 Download 按钮）
 2. 双击运行
    - 首次运行 Windows SmartScreen 会拦截（exe 未签名），点 **「更多信息」→「仍要运行」**
 3. 程序会自动启动浏览器并检测登录态，未登录会自动打开淘宝登录页
